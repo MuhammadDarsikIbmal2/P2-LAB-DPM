@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, View, Text } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -19,6 +19,18 @@ export default function HomeScreen() {
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
       </ThemedView>
+
+      {/* Tambahkan Komponen Baru */}
+      <View style={styles.centeredContainer}>
+        <Text style={styles.centeredText}>Bang berarti ini yang di ubah bagian index aja?</Text>
+        <Text style={styles.centeredText}>kek gini udah bisa la ya!</Text>
+
+        <View style={styles.boxContainer}>
+          <View style={styles.box1} />
+          <View style={styles.box2} />
+        </View>
+      </View>
+      
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
@@ -28,26 +40,10 @@ export default function HomeScreen() {
             {Platform.select({
               ios: 'cmd + d',
               android: 'cmd + m',
-              web: 'F12'
+              web: 'F12',
             })}
           </ThemedText>{' '}
           to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
@@ -70,5 +66,36 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: 'absolute',
+  },
+
+  /* Tambahkan Styles Baru */
+  centeredContainer: {
+    flex: 1,
+    backgroundColor: '#D3D3D3', // Warna abu-abu terang
+    justifyContent: 'center',  // Pusatkan secara vertikal
+    alignItems: 'center',      // Pusatkan secara horizontal
+    padding: 16,               // Jarak antar elemen
+  },
+  centeredText: {
+    fontSize: 24,
+    color: 'blue',
+    fontWeight: 'bold',
+    marginBottom: 20, // Jarak dengan kotak di bawah
+  },
+  boxContainer: {
+    flexDirection: 'row',        // Susunan horizontal
+    justifyContent: 'space-between', // Jarak merata
+    width: '100%',               // Lebar area kotak
+    paddingHorizontal: 32,       // Jarak dari tepi layar
+  },
+  box1: {
+    width: 100,
+    height: 100,
+    backgroundColor: 'red',      // Warna kotak 1
+  },
+  box2: {
+    width: 100,
+    height: 100,
+    backgroundColor: 'black',    // Warna kotak 2
   },
 });
